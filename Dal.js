@@ -9,22 +9,25 @@
 // @grant        GM_addStyle
 // ==/UserScript==
 
-function setupTheButton() {
-    let nextButton = document.createElement('button');
-    let buttonStyle = `
+function setupThePanel() {
+    let nextButton = document.createElement('div');
+    let panelStyle = `
         position: fixed;
         right: 15px;
         z-index: 100;
-        bottom: 10px;
-        width: 50px;
-        height: 50px;
-        background-color: #ffbf00;
+        bottom: -460px;
+        width: 300px;
+        height: 500px;
+        background-color: #efefef;
         border: none;
-        border-radius: 50%
+        border-radius: 10px;
+        overflow-x: hidden;
+        overflow-y: scroll;
+        box-shadow: -2px -2px 8px grey;
     `
-    nextButton.className = "nextButton";
-    nextButton.style = buttonStyle;
-    nextButton.innerHTML = "Next";
+    nextButton.className = "selectedPanel";
+    nextButton.style = panelStyle;
+    nextButton.innerHTML = "<div style='padding-top: 10px'><center>Next</center></div>";
     document.body.appendChild(nextButton);
 }
 
@@ -50,5 +53,5 @@ function setupCheckbox() {
 }
 
 var selected = {};
-setupTheButton();
+setupThePanel();
 setupCheckbox();
