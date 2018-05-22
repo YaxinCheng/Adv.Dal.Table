@@ -4,6 +4,7 @@
 // @version      0.1
 // @description  Easier course selection
 // @author       Yaxin Cheng
+// @require      https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js
 // @match        https://dalonline.dal.ca/PROD/fysktime.P_DisplaySchedule?s_term=*&s_subj=*&s_district=*
 // @grant        GM_addStyle
 // ==/UserScript==
@@ -38,8 +39,8 @@ function checkboxSelected(element) {
 }
 
 function setupCheckbox() {
-    let rows = Array.from(document.querySelectorAll('table.dataentrytable > tbody > tr:not([valign=middle])')).slice(3);
-    let courseRows = rows.filter(function (tr) {
+    let rows = $('table.dataentrytable > tbody > tr:not([valign=middle])').slice(3);
+    let courseRows = rows.toArray().filter(function (tr) {
         return tr.children[0].innerHTML != "<b>NOTE</b>";
     });
     courseRows.forEach(function(tr) {
